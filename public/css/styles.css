@@ -1,0 +1,253 @@
+body{
+	overflow: hidden;
+}
+* {
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
+#videoGrid {
+	display: flex;
+	justify-content: center;
+    justify-content: center;
+	flex-direction: column;
+    z-index: 1;
+    bottom: 30px;
+    max-height: calc(100vh - 50px);
+	overflow-y: auto;
+	flex-wrap: wrap;
+    flex-grow: inherit;
+    column-gap: 0;
+    padding: 0 15px;
+}
+
+#videoGrid video {
+	width: 271px;
+	object-fit: cover;
+	border-radius: 5px;
+	border: 1px solid #fff;
+	margin: 5px;
+	padding: 1px;
+}
+
+.main {
+	height: 100vh;
+	display: flex;
+	overflow: hidden;
+}
+
+.mainLeft {
+	background: #000;
+	flex: 3;
+	display: flex;
+	flex-direction: column;
+}
+
+.mainVideos {
+	flex-grow: 1;
+	background-color: #222222;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
+}
+
+.mainControls {
+	padding: 3px 5px 0px 5px;
+	display: flex;
+	background-color: #1a1a1a;
+	color: #a8a8a8;
+	justify-content: space-between;
+	z-index: 3;
+	height: 50px;
+	box-sizing: border-box;
+}
+
+.mainControlsBlock {
+	display: flex;
+}
+
+.mainControlsButton {
+	letter-spacing: 0.3px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 4px 22px;
+	min-width: 80px;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.mainControlsButton svg {
+	font-size: 19px;
+	margin-bottom: 4px;
+}
+
+.mainControlsButton:hover {
+	background-color: #2e2e2e;
+	border-radius: 5px;
+	color: #d5d5d5;
+}
+
+.mainControlsButtonEndMeeting {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 4px 22px;
+	font-size: 12px;
+}
+
+.leaveMeeting {
+	font-weight: 600;
+	cursor: pointer;
+	padding: 4px 22px;
+	background-color: #b72525;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.unmute,
+.stop {
+	color: #cc3b33;
+}
+
+.mainRight {
+	display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 0;
+    height: calc(100vh - 50px);
+	position: absolute;
+    transition: all .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
+    right: -300px;
+    z-index: 1;
+	box-sizing: border-box;
+}
+
+.mainRight.show{
+	padding: 22px 18px;
+    flex: 1;
+    border-left: 1px solid #2d3d42;
+    width: 300px;
+    right: 0;
+}
+
+.mainHeader {
+	text-align: center;
+}
+
+.mainHeader h6 {
+	font-weight: 700;
+	color: #4a4a4a;
+	font-size: 13px;
+}
+
+.mainChatWindow {
+	flex-grow: 1;
+	overflow-y: auto;
+}
+
+.messagesContainer {
+	list-style: none;
+}
+
+.messagesContainer .isTyping{
+	display: none;
+	font-style: italic;
+    color: blue;
+    font-size: small;
+}
+.messagesContainer .isTyping.show{
+	display : block;
+}
+
+.message {
+	font-size: 13px;
+	display: block;
+}
+
+.messageSendingTo {
+	font-size: 12px;
+	margin-bottom: 8px;
+}
+
+.messageSendingTo span {
+	font-size: 12px;
+	margin-left: 3px;
+	background-color: #f2f2f7;
+	padding: 3px 8px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.messageSendingTo span:hover {
+	background-color: #e7f1fd;
+	color: #2f89f2;
+}
+
+.messageSendingTo svg {
+	font-size: 10px;
+	color: #000;
+}
+
+.messageHeader {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+	font-size: 11px;
+	color: #8086ac;
+}
+
+.messageReceiver {
+	color: #309af6;
+}
+
+.mainMessageContainer {
+	display: flex;
+}
+
+.mainMessageContainer input {
+	flex-grow: 1;
+	background-color: transparent;
+	border: none;
+	font-size: 13px;
+	outline: 0;
+}
+
+
+#local-stream{
+	height: calc(100vh - 70px);
+    z-index: 1;
+}
+#local-stream video{
+	height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 600px) {
+		.mainControls{
+			height: 80px;
+		}
+		#local-stream{
+			height: calc(100vh - 80px);
+			width: 100%;
+		}
+		.mainRight{
+			height: calc(100vh - 80px);
+		}
+		#videoGrid{
+			position: absolute;
+			flex-direction: row;
+			overflow-x: auto;
+			width: 100%;
+		}
+		#videoGrid video{
+			height: 100px;
+			width: unset;
+		}
+}
